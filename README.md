@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Para ti 💘</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+      background-size: 300% 300%;
+      animation: fondo 12s infinite alternate;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      overflow: hidden;
+      color: #222;
+    }
+
+    @keyframes fondo {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    h1 span {
+      display: inline-block;
+      animation: latir 1s infinite;
+    }
+
+    @keyframes latir {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 20px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .btn-rosa {
+      background: #ff3b6b;
+      color: white;
+    }
+
+    .btn-rosa:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(255,59,107,0.6);
+    }
+
+    /* corazones cayendo */
+    .heart {
+      position: fixed;
+      top: -10px;
+      color: red;
+      font-size: 24px;
+      animation: caer 6s linear infinite;
+    }
+
+    @keyframes caer {
+      0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* mensaje secreto */
+    #secreto {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.3rem;
+      background: rgba(255,255,255,0.7);
+      padding: 15px;
+      border-radius: 15px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hola bonita <span>💖</span></h1>
+  <p>Esta página es solo para ti… porque te mereces cositas lindas 😌</p>
+
+  <button class="btn-rosa" onclick="mostrarSecreto()">💌 Mensaje secreto</button>
+
+  <div id="secreto"></div>
+
+  <script>
+    const frases = [
+      "Te quiero muchoooooteee mi niña bonita 💕",
+      "Eres la razón de muchas de mis sonrisas ✨",
+      "Me encanta tenerte en mi vida 🌸",
+      "Contigo todo se siente más bonito 😍",
+      "Si supieras lo especial que eres para mí… 💫"
+    ];
+
+    function mostrarSecreto() {
+      const secreto = document.getElementById("secreto");
+      const random = frases[Math.floor(Math.random() * frases.length)];
+      secreto.innerText = random;
+      secreto.style.display = "block";
+    }
+
+    // corazones cayendo
+    function crearCorazon() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (20 + Math.random() * 20) + "px";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => { heart.remove(); }, 7000);
+    }
+    setInterval(crearCorazon, 500);
+  </script>
+</body>
+</html>
